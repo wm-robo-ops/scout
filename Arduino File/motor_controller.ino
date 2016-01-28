@@ -8,6 +8,7 @@ const int y_pin = 6;
 
 int x = 1500;
 int y = 1500;
+char val = ' ';
 
 long current_time = 0;
 long last_time = 0;
@@ -46,9 +47,9 @@ void loop()
         x_servo.writeMicroseconds(x);
       }
       else{
-      
+
     }
-      
+
     }
     else if(val=='y'){
       y = 0;
@@ -64,5 +65,5 @@ void loop()
     }
     last_time = millis();
   }
-  
+
 }
