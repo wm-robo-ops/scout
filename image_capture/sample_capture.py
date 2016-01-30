@@ -48,3 +48,10 @@ def stop_img_capture():
     '''Stops the camera from continuously taking pictures at a 
     set interval'''
     is_recording = False
+
+
+# Recording a video for 30 seconds
+record(30, False, "test_video.h264")
+
+# Capturing image every 5 seconds 10 times as a .jpg
+capture_image(True, 5, 10, "test_image", ".jpg)
