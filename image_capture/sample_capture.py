@@ -42,12 +42,12 @@ def capture_image(is_repeating, interval_length, iterations, filename, file_exte
             print("Captured image (continuous)")
             # Making sure we don't overwrite files
             counter = counter + 1
-            sleep(duration)
+            sleep(interval_length)
     else:
         for i in range(iterations):
             print("Captured image (iterations)")
             camera.capture(filename + str(i + 1) + file_extension)
-            sleep(duration)
+            sleep(interval_length)
 
 
 def stop_recording():
