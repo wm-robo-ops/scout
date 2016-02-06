@@ -14,10 +14,12 @@ def record(duration, enable_stabilization, filename):
     camera.video_stabilization = enable_stabilization
 
     camera.start_recording(filename)
+    print("Started recording")
 
     if duration != -1:
         sleep(duration)
         camera.stop_recording()
+        print("Stopped recoridng")
 
 
 def capture_image(is_repeating, interval_length, iterations, filename, file_extension):
@@ -31,11 +33,13 @@ def capture_image(is_repeating, interval_length, iterations, filename, file_exte
     if iterations == -1:
         while is_repeating:
             camera.capture(filename, str(counter), file_extension)
+            print("Captured image (continuous)")
             # Making sure we don't overwrite files
             counter = counter + 1
             sleep(duration)
     else:
         for i in range(iterations):
+            print("Captured image (iterations)")
             camera.capture(filename, str(i + 1), file_extension)
             sleep(duration)
 
@@ -43,16 +47,18 @@ def capture_image(is_repeating, interval_length, iterations, filename, file_exte
 def stop_recording():
     '''Stops the camera from recording video'''
     camera.stop_recording()
+    print("Stopped recording")
 
 
 def stop_img_capture():
     '''Stops the camera from continuously taking pictures at a 
     set interval'''
     is_recording = False
+    print("Stopped image capture")
 
 
 # Recording a video for 30 seconds
-record(30, False, "test_video.h264")
+record(5, False, "test_video.h264")
 
 # Capturing image every 5 seconds 10 times as a .jpg
-capture_image(True, 5, 10, "test_image", ".jpg")
+capture_image(True, 1, 2, "test_image", ".jpg")
