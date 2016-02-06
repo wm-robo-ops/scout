@@ -54,4 +54,4 @@ def stop_img_capture():
 record(30, False, "test_video.h264")
 
 # Capturing image every 5 seconds 10 times as a .jpg
-capture_image(True, 5, 10, "test_image", ".jpg)
+capture_image(True, 5, 10, "test_image", ".jpg")
