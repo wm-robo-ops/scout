@@ -1,5 +1,6 @@
 # Install 'python-picamera' from apt-get before using this
 import picamera
+from time import sleep
 
 camera = picamera.PiCamera()
 is_recording = False
