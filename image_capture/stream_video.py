@@ -7,8 +7,11 @@ import picamera
 
 # Frames per second of video
 framerate = 30
+host = socket.gethostname() # Getting local machine name
+port = 12345
 client_socket = socket.socket()
-client_socket.connect(('0.0.0.0', 8080))
+client_socket.bind((host, port))
+# client_socket.connect(('0.0.0.0', 8080))
 connection = client_socket.makefile('wb')
 try:
     connection_lock = threading.Lock()
