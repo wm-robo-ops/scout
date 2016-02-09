@@ -1,4 +1,6 @@
 # Install 'python-picamera' from apt-get before using this
+# Run with Python 3
+
 import picamera
 from time import sleep
 
@@ -15,9 +17,9 @@ def record(duration, enable_stabilization, filename):
     stop.'''
     camera.video_stabilization = enable_stabilization
 
-    camera.start_preview()
+    #camera.start_preview()
     # camera warm-up pi
-    sleep(2)
+    #sleep(2)
     camera.start_recording(filename)
     print("Started recording")
 
@@ -62,11 +64,10 @@ def stop_img_capture():
     is_recording = False
     print("Stopped image capture")
 
-
 # Recording a video for 30 seconds
-record(5, False, "test_video.h264")
+record(10, False, "test_video.h264")
 
 # Capturing image every 1 second 2 times as a .jpg
-capture_image(True, 1, 2, "test_image", ".jpg")
+capture_image(True, 1, 5, "test_image", ".jpg")
 
 camera.close()

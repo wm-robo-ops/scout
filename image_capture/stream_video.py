@@ -5,8 +5,10 @@ import time
 import threading
 import picamera
 
+# Frames per second of video
+framerate = 30
 client_socket = socket.socket()
-client_socket.connect(('100.91.183.45', 8000))
+client_socket.connect(('0.0.0.0', 8080))
 connection = client_socket.makefile('wb')
 try:
     connection_lock = threading.Lock()
@@ -39,7 +41,7 @@ try:
                         with pool_lock:
                             pool.append(self)
 
-    count = 0
+    count = 0 # TODO: switch this to a toggle rather than iterations
     start = time.time()
     finish = time.time()
 
@@ -63,7 +65,8 @@ try:
     with picamera.PiCamera() as camera:
         pool = [ImageStreamer() for i in range(4)]
         camera.resolution = (640, 480)
-        camera.framerate = 30
+        camera.vflip = True
+        camera.framerate = framerate
         time.sleep(2)
         start = time.time()
         camera.capture_sequence(streams(), 'jpeg', use_video_port=True)
