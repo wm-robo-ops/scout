@@ -6,12 +6,11 @@ import threading
 import picamera
 
 # Frames per second of video
-framerate = 30
-host = socket.gethostname() # Getting local machine name
+framerate = 60
+server_addr = "100.86.0.1" # Which machine you want to connect to
 port = 12345
 client_socket = socket.socket()
 client_socket.bind((host, port))
-# client_socket.connect(('0.0.0.0', 8080))
 connection = client_socket.makefile('wb')
 try:
     connection_lock = threading.Lock()
@@ -67,7 +66,7 @@ try:
 
     with picamera.PiCamera() as camera:
         pool = [ImageStreamer() for i in range(4)]
-        camera.resolution = (640, 480)
+        camera.resolution = (1920, 1080)
         camera.vflip = True
         camera.framerate = framerate
         time.sleep(2)
