@@ -51,7 +51,7 @@
  #include <iostream>
  #include <fstream>
  #include "opencv2/highgui/highgui.hpp"
- #include "opencv2/stitching/stitcher.hpp"
+ #include "opencv2/stitching.hpp"
  
  using namespace std;
  using namespace cv;
@@ -107,8 +107,8 @@
          }
          else
          {
-             Mat img = imread(argv[i]);
-             if (img.empty())
+             Mat img = imread(argv[i], CV_LOAD_IMAGE_COLOR);
+             if (! img.data)
              {
                  cout << "Can't read image '" << argv[i] << "'\n";
                  return -1;
